@@ -17,6 +17,7 @@ class Student:
         return f"Student's full name: {self.surname}, {self.name}"
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
-
+if __name__ == "__main__":
+    student_1 = Student(name="Maria", surname="Petrova", faculty="Arts", course=3)
+    student_1_full_name = student_1.get_full_name()
+    print(student_1_full_name)
