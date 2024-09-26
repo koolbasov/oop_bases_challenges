@@ -18,7 +18,9 @@ class BankAccount:
         self.balance += income
 
     def decrease_balance(self, outcome: float):
-        if outcome > self.balance:
+        if outcome < 0:
+            raise ValueError("Расход не может быть отрицательным")
+        elif outcome > self.balance:
             raise ValueError("Недостаточно средств на счете")
         self.balance -= outcome
 
@@ -28,5 +30,7 @@ if __name__ == "__main__":
     print(bank_account_1.balance)
     bank_account_1.decrease_balance(1000)
     print(bank_account_1.balance)
-    bank_account_1.decrease_balance(100_000)
+    # bank_account_1.decrease_balance(100_000)
+    # print(bank_account_1.balance)
+    bank_account_1.decrease_balance(-10000)
     print(bank_account_1.balance)
