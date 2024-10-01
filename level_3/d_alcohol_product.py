@@ -9,6 +9,7 @@
        Для определения текущего часа можно использовать datetime.now().hour
     3. Создайте экземпляр класса AlcoholProduct и проверьте, можно ли сейчас продавать алкоголь.
 """
+
 from datetime import datetime
 
 
@@ -26,8 +27,23 @@ class Product:
 
 
 class AlcoholProduct(Product):
-    pass  # код писать тут
+    """
+    обычно в часы между 5 утра и 11 вечера алкоголь как раз можно продавать,
+    но раз так написано в условии, то мы его в это время продавать не будем
+    альтернативный вариант закомментировал
+    """
+
+    # def is_available(self):
+    #     if 5 < datetime.now().hour < 23:
+    #         return super().is_available()
+    #     return False
+
+    def is_available(self):
+        if 5 < datetime.now().hour < 23:
+            return False
+        return super().is_available()
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+if __name__ == "__main__":
+    tequila = AlcoholProduct("Tequila Blanco", 119.99, 33)
+    print(tequila.is_available())

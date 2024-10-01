@@ -17,11 +17,21 @@ class TextProcessor:
         return self.text.upper()
 
     def summarize(self):
-        return f'Total text length: {len(self.text)}'
+        return f"Total text length: {len(self.text)}"
 
 
-# код писать тут
+class AdvancedTextProcessor(TextProcessor):
+    def summarize(self):
+        words = self.text.split()
+        return super().summarize() + f", total number of words in the text: {len(words)}"
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+if __name__ == "__main__":
+    text = "Total text length: 67, total number of words in the text: 10"
+    new_document1 = TextProcessor(text)
+    print(new_document1.to_upper())
+    print(new_document1.summarize())
+    print()
+    new_document2 = AdvancedTextProcessor(text)
+    print(new_document2.to_upper())
+    print(new_document2.summarize())
