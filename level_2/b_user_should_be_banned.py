@@ -1,5 +1,5 @@
 """
-Нам неоюходимо проверить, находится ли фамилия пользователя в списке запрещенных.
+Нам необходимо проверить, находится ли фамилия пользователя в списке запрещенных.
 
 Задания:
     1. Cоздайте класс юзера, у которого параметры: имя, фамилия, возраст.
@@ -7,8 +7,16 @@
        Пользователя стоит забанить, если его фамилия находится в SURNAMES_TO_BAN.
 """
 
-SURNAMES_TO_BAN = ['Vaughn', 'Wilhelm', 'Santaros', 'Porter', 'Smith']
+SURNAMES_TO_BAN = ["Vaughn", "Wilhelm", "Santaros", "Porter", "Smith"]
 
 
 class User:
-    pass  # код писать тут
+    def __init__(self, name: str, surname: str, age: int):
+        self.name = name
+        self.surname = surname
+        self.age = age
+
+    def should_be_banned(self):
+        if self.surname in SURNAMES_TO_BAN:
+            return True
+        return False

@@ -22,9 +22,51 @@ class UserManager:
         return self.usernames
 
 
-# код писать тут
+class AdminManager(UserManager):
+    def ban_username(self, username):
+        if username in self.usernames:
+            self.usernames.remove(username)
+        else:
+            print("Такого пользователя не существует.")
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+class SuperAdminManager(AdminManager):
+    def ban_all_users(self):
+        if self.usernames:
+            self.usernames.clear()
+            print("Все пользователи забанены")
+        else:
+            print("Пользователей для забанивания не найдено")
 
+
+if __name__ == "__main__":
+    user_manager = UserManager()
+    print(user_manager.get_users())
+    user_manager.add_user("Benutzer_1")
+    user_manager.add_user("Benutzer_2")
+    user_manager.add_user("Benutzer_3")
+    print(user_manager.get_users())
+    print()
+
+    admin_manager = AdminManager()
+    print(admin_manager.get_users())
+    admin_manager.add_user("User_1")
+    admin_manager.add_user("User_2")
+    admin_manager.add_user("User_3")
+    print(admin_manager.get_users())
+    admin_manager.ban_username("User_36")
+    admin_manager.ban_username("User_1")
+    print(admin_manager.get_users())
+    print()
+
+    super_admin_manager = SuperAdminManager()
+    print(super_admin_manager.get_users())
+    super_admin_manager.add_user("Usuario_1")
+    super_admin_manager.add_user("Usuario_2")
+    super_admin_manager.add_user("Usuario_3")
+    print(super_admin_manager.get_users())
+    super_admin_manager.ban_username("Usuario_36")
+    super_admin_manager.ban_username("Usuario_1")
+    print(super_admin_manager.get_users())
+    super_admin_manager.ban_all_users()
+    print(super_admin_manager.get_users())
